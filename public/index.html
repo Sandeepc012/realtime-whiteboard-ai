@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collaborative Whiteboard</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; overflow: hidden; }
+    #toolbar { background: #f0f0f0; padding: 8px; display: flex; gap: 8px; }
+    #canvas { border: 1px solid #ccc; cursor: crosshair; display: block; margin: 0 auto; }
+    #notes { position: absolute; top: 0; left: 0; pointer-events: none; }
+    #summary { position: fixed; right: 0; top: 0; width: 300px; height: 100%; padding: 8px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); background: #fff; overflow-y: auto; }
+    .note { position: absolute; background: #fff9c4; border: 1px solid #fdd835; padding: 4px; border-radius: 4px; pointer-events: all; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/socket.io@4.7.2/dist/socket.io.min.js"></script>
+  <script src="https://unpkg.com/yjs@13.6.9/dist/yjs.js"></script>
+  <script src="https://unpkg.com/y-websocket@1.5.10/dist/y-websocket.js"></script>
+</head>
+<body>
+  <div id="toolbar">
+    <button id="addNoteBtn">Add Sticky Note</button>
+    <button id="summarizeBtn">Summarize Notes</button>
+  </div>
+  <canvas id="canvas" width="800" height="600"></canvas>
+  <div id="notes"></div>
+  <div id="summary"><strong>Summary:</strong> <span id="summaryText"></span></div>
+  <script src="client.js"></script>
+</body>
+</html>
